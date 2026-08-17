@@ -75,6 +75,7 @@ a {
 
 .hero-section {
     position: relative;
+    width: 100%;
     min-height: 540px;
     display: flex;
     align-items: center;
@@ -95,8 +96,9 @@ a {
 .hero-content {
     position: relative;
     z-index: 1;
-    width: 100%;
-    max-width: 860px;
+    width: min(100%, 860px);
+    margin-inline: auto;
+    align-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -104,6 +106,9 @@ a {
 
 .center-logo-wrapper {
     margin-bottom: -46px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .center-seal {
@@ -151,8 +156,10 @@ a {
 
 .search-form {
     display: flex;
+    flex-direction: row;
     gap: 12px;
     align-items: center;
+    width: 100%;
     background: #fff;
     border-radius: 999px;
     padding: 6px;
@@ -204,6 +211,7 @@ a {
 }
 
 .feature-strip {
+    width: min(100%, 1160px);
     max-width: 1160px;
     margin: -42px auto 0;
     padding: 0 20px;
@@ -241,15 +249,14 @@ a {
 
 .vmg-section {
     padding: 100px 20px 80px;
-    display: flex;
-    justify-content: center;
 }
 
 .vmg-container,
 .info-container,
 .footer-container {
-    width: 100%;
+    width: min(100%, 1100px);
     max-width: 1100px;
+    margin-inline: auto;
 }
 
 .vmg-top {
@@ -307,6 +314,7 @@ a {
 }
 
 .goals-grid {
+    width: 100%;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     text-align: left;
 }
@@ -322,8 +330,6 @@ a {
 
 .info-programs-section {
     padding: 24px 20px 100px;
-    display: flex;
-    justify-content: center;
 }
 
 .info-grid {
@@ -344,6 +350,7 @@ a {
 }
 
 .programs-block {
+    width: 100%;
     text-align: center;
 }
 
@@ -354,7 +361,9 @@ a {
 }
 
 .programs-grid {
+    width: 100%;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-items: stretch;
 }
 
 .program-card {
@@ -362,6 +371,7 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
     min-height: 180px;
     background: linear-gradient(180deg, #fff 0%, #fff7f7 100%);
 }
@@ -558,13 +568,14 @@ a {
     color: #333;
 }
 
-form {
+.contact-page form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-input, textarea {
+.contact-page input,
+.contact-page textarea {
     width: 100%;
     padding: 15px;
     border: 1px solid #777;
