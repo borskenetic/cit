@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caraga Institute of Technology - OPAC</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="logo-container">
+      <img src="img/CIT2.png" alt="Caraga Institute of Technology Logo" class="brand-logo">
+    
+    </div>
+
+    <nav class="nav-links">
+      <a href="#">ABOUT</a>
+      <a href="#" class="active">OPAC</a>
+      <a href="#">ZENDY</a>
+      <a href="#">CONTACT US</a>
+      <a href="#">ROOM RESERVATIONS</a>
+      <a href="#">FEEDBACK</a>
+      <button class="btn-login">LOGIN</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="hero-section">
+    <!-- Overlay for red/soft tint -->
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <!-- Central Round Logo -->
+      <div class="center-logo-wrapper">
+        <img src="img/CIT.png" alt="CIT Seal" class="center-seal">
+      </div>
+
+      <!-- Glassmorphic Search Box -->
+      <div class="search-card">
+        <span class="card-subtitle">ONLINE PUBLIC ACCESS CATALOG</span>
+        <h1 class="card-title">Search the CIT Library Collection</h1>
+        <p class="card-description">Find books by title, author, subject, ISBN, or keyword</p>
+
+        <form class="search-form" id="opacSearchForm">
+          <div class="input-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="searchInput" placeholder="Search title, author, keyword..." required>
+            <i class="fa-solid fa-circle-xmark clear-icon" id="clearBtn" style="display: none;"></i>
+          </div>
+          <button type="submit" class="btn-search">Search OPAC</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <section class="video-section">
+  <div class="video-container">
+    <!-- Note: 'muted' is required by modern browsers to allow autoplay on scroll -->
+    <video controls muted poster="video-placeholder.jpg" class="responsive-video">
+      <source src="img/howToRegister-zendy.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
+
+<!-- Vision, Mission & Goals Section -->
+  <section class="vmg-section">
+    <div class="vmg-container">
+      
+      <!-- Vision & Mission Block -->
+      <div class="vmg-top">
+        <!-- Vision Row -->
+        <div class="vmg-row">
+          <h2 class="vmg-label">VISION</h2>
+          <p class="vmg-text">
+            To be the institution of higher learning recognized for affordable academic excellence in its class.
+          </p>
+        </div>
+
+        <!-- Mission Row -->
+        <div class="vmg-row">
+          <h2 class="vmg-label">MISSION</h2>
+          <p class="vmg-text">
+            Caraga Institute of Technology affords top tier education, enhancing the quality of life of its students, teachers, their families and communities.
+          </p>
+        </div>
+      </div>
+
+      <!-- Goals Block -->
+      <div class="vmg-goals">
+        <h2 class="goals-title">GOALS</h2>
+        
+        <div class="goals-grid">
+          <div class="goal-card">
+            <p>
+              To offer top priority courses using results-based instruction, research and community engagement as facilitated by a proficient faculty and staff.
+            </p>
+          </div>
+
+          <div class="goal-card">
+            <p>
+              To find ways and means to balance the cost of education against the uncompromising high standards in the course offering.
+            </p>
+          </div>
+
+          <div class="goal-card">
+            <p>
+              To inspire and produce highly-skilled graduates who emerge as productive citizens helping enhance the communities of the Agusan and Caraga region.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Info & Programs Section -->
+  <section class="info-programs-section">
+    <div class="info-container">
+
+      <!-- Library Hours & Staff Block -->
+      <div class="info-grid">
+        <!-- Service Hours -->
+        <div class="info-col">
+          <h2 class="info-title">LIBRARY SERVICE HOURS</h2>
+          <p class="schedule-subtitle">Regular Schedule:</p>
+          <p class="info-text">Monday-Friday 8:00AM – 12:00PM / 1:30PM – 7:00PM</p>
+          <p class="info-text">Saturday 8:00AM – 12:00PM</p>
+        </div>
+
+        <!-- Library Staff -->
+        <div class="info-col">
+          <h2 class="info-title">LIBRARY STAFF</h2>
+          <p class="info-text">Margelie H. Munda - Librarian</p>
+          <p class="info-text">Teresita S. Tiape - Librarian Staff</p>
+          <p class="info-text">Marnie Rubi - Librarian Staff</p>
+        </div>
+      </div>
+
+      <!-- Programs Offered Block -->
+      <div class="programs-block">
+        <h2 class="programs-title">PROGRAMS OFFERED</h2>
+
+        <div class="programs-grid">
+          <!-- Program 1 -->
+          <div class="program-card">
+            <div class="program-img-wrapper">
+              <img src="img/BEED.png" alt="Bachelor of Elementary Education">
+            </div>
+            <h3 class="program-name">Bachelor of Elementary Education</h3>
+          </div>
+
+          <!-- Program 2 -->
+          <div class="program-card">
+            <div class="program-img-wrapper">
+              <img src="img/BSBA.png" alt="Bachelor of Science in Business Administration">
+            </div>
+            <h3 class="program-name">Bachelor of Science in Business Administration</h3>
+          </div>
+
+          <!-- Program 3 -->
+          <div class="program-card">
+            <div class="program-img-wrapper">
+              <img src="img/CSC.png" alt="Computer Secretarial Course">
+            </div>
+            <h3 class="program-name">Computer Secretarial Course</h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-logo-wrapper">
+        <img src="img/CIT.png" alt="Caraga Institute of Technology Seal" class="footer-logo">
+      </div>
+      
+      <h3 class="footer-title">CARAGA INSTITUTE OF TECHNOLOGY</h3>
+      
+      <p class="footer-contact">
+        National Highway 8609 Kitcharao, Philippines <span class="divider">|</span> 
+        <a href="mailto:citkitcharao.edu.ph@gmail.com">citkitcharao.edu.ph@gmail.com</a> <span class="divider">|</span> 
+        63 905 4894 18
+      </p>
+
+      <hr class="footer-divider">
+
+      <p class="footer-copyright">
+        Pantas © 2025. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

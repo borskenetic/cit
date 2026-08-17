@@ -12,7 +12,7 @@ body,
 
 /* OPAC search results header */
 .opac-search-header {
-    background: linear-gradient(160deg, var(--brand-button-bg, #1f4ea7) 0%, #163a82 100%);
+    background: linear-gradient(160deg, #fb0d03 50%, #ffd71d 100%);
     color: var(--brand-button-text, #fff);
     padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 3vw, 2rem) clamp(1.5rem, 3.5vw, 2.25rem);
 }
@@ -152,7 +152,7 @@ header {
     padding: 8px 14px;
     border-radius: 999px;
     text-decoration: none;
-    color: var(--brand-nav-link, #1f4ea7);
+    color: #fb0d03;
     font-weight: 600;
     transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
@@ -610,7 +610,7 @@ header {
 }
 
         #nab{
-        color: #1f4ea7  !important;
+        color: #fb0d03  !important;
         }
 
 #searchBar {
@@ -1453,7 +1453,7 @@ footer {
 }
 
 .opac-hero-search {
-    background: linear-gradient(160deg, var(--brand-button-bg, #1f4ea7) 0%, #163a82 55%, #0f2a5c 100%);
+    background: linear-gradient(160deg, #fb0d03 50%, #ffd71d 100%);
     color: #fff;
     padding: clamp(2rem, 5vw, 3.5rem) 1.25rem clamp(2.25rem, 5vw, 3.75rem);
 }
