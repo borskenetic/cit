@@ -18,6 +18,7 @@ class PendingStudent extends Model
         'middle_initial',
         'birthday',
         'qrcode',
+        'rfid',
         'course',
         'year',
         'mobile_number',

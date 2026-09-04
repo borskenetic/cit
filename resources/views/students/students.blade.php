@@ -113,6 +113,9 @@
                                                 @if($student->id_number)
                                                     ID {{ $student->id_number }}
                                                 @endif
+                                                @if($student->rfid)
+                                                    · RFID <span class="patron-dir__code">{{ $student->rfid }}</span>
+                                                @endif
                                                 @if($student->qrcode)
                                                     · <span class="patron-dir__code">{{ $student->qrcode }}</span>
                                                 @endif

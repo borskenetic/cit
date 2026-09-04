@@ -16,6 +16,7 @@ class Student extends Model
         'middle_initial',
         'birthday',
         'qrcode',
+        'rfid',
         'course',
         'year',
         'profile_picture',

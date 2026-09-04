@@ -75,6 +75,9 @@
             <div class="text-center text-md-start flex-grow-1">
                 <h4 class="mb-1">{{ $student->firstname }} {{ $student->lastname }}</h4>
                 <p class="mb-1 text-muted">ID: {{ $student->id_number ?? '—' }}</p>
+                @if($student->rfid)
+                <p class="mb-1 text-muted small">RFID: {{ $student->rfid }}</p>
+                @endif
                 @if($student->email)
                 <p class="mb-1 text-muted small">{{ $student->email }}</p>
                 @endif

@@ -9,6 +9,7 @@ use App\Models\Program;
 use App\Models\PendingEmployee;
 use App\Models\Role;
 use App\Support\MiddleInitial;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class PendingStudentController extends Controller
@@ -44,12 +45,17 @@ class PendingStudentController extends Controller
     {
         MiddleInitial::mergeIntoRequest($request);
 
+        if ($request->input('rfid') === '' || $request->input('rfid') === null) {
+            $request->merge(['rfid' => null]);
+        }
+
         $validated = $request->validate([
             'id_number'        => 'required|string|max:255',
             'firstname'        => 'required|string|max:255',
             'lastname'         => 'required|string|max:255',
             'middle_initial'   => MiddleInitial::validationRule(),
             'birthday'         => 'nullable|date',
+            'rfid'             => 'nullable|string|max:255|unique:students,rfid|unique:pending_students,rfid',
             'course'           => 'required|string|max:255',
             'year'             => 'required|string|max:255',
             'mobile_number' => 'nullable|string|max:20',
@@ -62,6 +68,8 @@ class PendingStudentController extends Controller
             'profile_picture'  => 'nullable|image|mimes:jpg,jpeg,png|max:4096',
             'student_signature'=> 'nullable|string', // base64
         ]);
+
+        $validated['rfid'] = filled($validated['rfid'] ?? null) ? trim($validated['rfid']) : null;
 
         // Profile picture
         if ($request->hasFile('profile_picture')) {
@@ -137,6 +145,7 @@ class PendingStudentController extends Controller
                 'course'           => $pending->course,
                 'year'             => $pending->year,
                 'mobile_number' => $pending->mobile_number,
+                'email' => $pending->email,
                 'address' => $pending->address,
                 'emergency_person' => $pending->emergency_person,
                 'emergency_relationship' => $pending->emergency_relationship,
@@ -145,6 +154,7 @@ class PendingStudentController extends Controller
                 'profile_picture'  => $pending->profile_picture,
                 'student_signature'=> $pending->student_signature,
                 'qrcode'           => $newQr,
+                'rfid'             => $pending->rfid,
             ]);
 
             $pending->delete();

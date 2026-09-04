@@ -22,6 +22,12 @@
                    value="{{ old('id_number') }}" required>
         </div>
         <div class="col-md-6">
+            <label for="student_rfid" class="form-label">RFID</label>
+            <input type="text" name="rfid" id="student_rfid" class="form-control"
+                   value="{{ old('rfid') }}" placeholder="Scan or enter RFID strip data"
+                   autocomplete="off">
+        </div>
+        <div class="col-md-6">
             <label for="student_birthday" class="form-label">Birthday</label>
             <input type="date" name="birthday" id="student_birthday" class="form-control"
                    value="{{ old('birthday') }}">

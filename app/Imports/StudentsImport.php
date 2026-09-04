@@ -21,6 +21,7 @@ class StudentsImport implements ToModel
             'year' => $row[7] ?? null,
             'mobile_number' => $row[8] ?? null,
             'address' => $row[9] ?? null,
+            'rfid' => filled($row[10] ?? null) ? trim((string) $row[10]) : null,
         ]);
     }
 }

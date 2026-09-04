@@ -101,6 +101,7 @@
                                                 <div class="patron-dir__person-name">{{ $p->lastname }}, {{ $p->firstname }}</div>
                                                 <div class="patron-dir__person-meta">
                                                     @if($p->id_number) ID {{ $p->id_number }} @endif
+                                                    @if($p->rfid) · RFID <span class="patron-dir__code">{{ $p->rfid }}</span> @endif
                                                 </div>
                                             </div>
                                         </div>

@@ -51,6 +51,7 @@ class StudentController extends Controller
                   ->orWhere('firstname', 'like', "%{$search}%")
                   ->orWhere('course', 'like', "%{$search}%")
                   ->orWhere('qrcode', 'like', "%{$search}%")
+                  ->orWhere('rfid', 'like', "%{$search}%")
                   ->orWhere('id_number', 'like', "%{$search}%");
             });
         }
@@ -93,12 +94,17 @@ class StudentController extends Controller
     {
         MiddleInitial::mergeIntoRequest($request);
 
+        if ($request->input('rfid') === '' || $request->input('rfid') === null) {
+            $request->merge(['rfid' => null]);
+        }
+
         $validated = $request->validate([
             'id_number' => 'required|string|max:255|unique:students,id_number',
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'middle_initial' => MiddleInitial::validationRule(),
             'birthday' => 'nullable|date',
+            'rfid' => 'nullable|string|max:255|unique:students,rfid',
             'course' => 'required|string|max:255',
             'year' => 'required|string|max:255',
             'mobile_number' => 'nullable|string|max:255',
@@ -150,6 +156,7 @@ class StudentController extends Controller
 
             // ✅ Generate QR ONCE
             $validated['qrcode'] = $this->generateNextQrCode();
+            $validated['rfid'] = filled($validated['rfid'] ?? null) ? trim($validated['rfid']) : null;
 
             $student = Student::create($validated);
 
@@ -177,7 +184,9 @@ class StudentController extends Controller
     public function edit($id)
     {
         $student = Student::findOrFail($id);
-        return view('students.edit', compact('student'));
+        $programs = Program::orderBy('program_name')->get();
+
+        return view('students.edit', compact('student', 'programs'));
     }
 
     // Update student
@@ -187,25 +196,30 @@ class StudentController extends Controller
 
         MiddleInitial::mergeIntoRequest($request);
 
+        if ($request->input('rfid') === '' || $request->input('rfid') === null) {
+            $request->merge(['rfid' => null]);
+        }
+
         $validated = $request->validate([
             'id_number' => 'nullable|string|unique:students,id_number,' . $id,
             'lastname' => 'required|string|max:255',
             'firstname' => 'required|string|max:255',
             'middle_initial' => MiddleInitial::validationRule(),
             'birthday' => 'nullable|date',
-        
+            'rfid' => 'nullable|string|max:255|unique:students,rfid,' . $id,
+
             'course' => 'nullable|string|max:255',
             'year' => 'nullable|string|max:255',
-        
+
             'mobile_number' => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255',
             'address' => 'nullable|string',
-        
+
             'emergency_person' => 'nullable|string|max:255',
             'emergency_relationship' => 'nullable|string|max:255',
             'emergency_number' => 'nullable|string|max:255',
             'emergency_address' => 'nullable|string',
-        
+
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'student_signature' => 'nullable|string',
         ]);
@@ -250,6 +264,7 @@ class StudentController extends Controller
             }
 
             // ❌ DO NOT TOUCH QR HERE
+            $validated['rfid'] = filled($validated['rfid'] ?? null) ? trim($validated['rfid']) : null;
             $student->update($validated);
 
             DB::commit();
@@ -320,6 +335,10 @@ class StudentController extends Controller
                 throw new \Exception('ID Number already exists in students table.');
             }
 
+            if ($pending->rfid && Student::where('rfid', $pending->rfid)->exists()) {
+                throw new \Exception('RFID already exists in students table.');
+            }
+
             Student::create([
                 'id_number' => strtoupper($pending->id_number),
                 'lastname' => strtoupper($pending->lastname),
@@ -338,6 +357,7 @@ class StudentController extends Controller
                 'profile_picture' => $pending->profile_picture,
                 'student_signature' => $pending->student_signature,
                 'qrcode' => $pending->qrcode ?: $this->generateNextQrCode(),
+                'rfid' => $pending->rfid,
             ]);
 
             $pending->delete();
@@ -385,7 +405,8 @@ class StudentController extends Controller
 
         $student = Student::query()
             ->where(function ($q) use ($token) {
-                $q->where('qrcode', $token)
+                $q->where('rfid', $token)
+                    ->orWhere('qrcode', $token)
                     ->orWhere('id_number', $token)
                     ->orWhereRaw('LOWER(TRIM(id_number)) = ?', [strtolower($token)]);
             })
@@ -688,6 +709,7 @@ class StudentController extends Controller
             'Middle Initial',
             'Birthday',
             'QR Code',
+            'RFID',
             'Course',
             'Year',
             'Mobile Number',
@@ -715,6 +737,7 @@ class StudentController extends Controller
                     $student->middle_initial,
                     $student->birthday,
                     $student->qrcode,
+                    $student->rfid,
                     $student->course,
                     $student->year,
                     $student->mobile_number,

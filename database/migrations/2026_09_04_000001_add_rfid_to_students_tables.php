@@ -1,0 +1,31 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::table('students', function (Blueprint $table) {
+            $table->string('rfid')->nullable()->unique()->after('qrcode');
+        });
+
+        Schema::table('pending_students', function (Blueprint $table) {
+            $table->string('rfid')->nullable()->after('qrcode');
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::table('pending_students', function (Blueprint $table) {
+            $table->dropColumn('rfid');
+        });
+
+        Schema::table('students', function (Blueprint $table) {
+            $table->dropUnique(['rfid']);
+            $table->dropColumn('rfid');
+        });
+    }
+};

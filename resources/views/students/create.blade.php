@@ -10,7 +10,7 @@
         <div>
             <p class="patron-dir__eyebrow">Patron data</p>
             <h1 class="patron-dir__title">Register student</h1>
-            <p class="patron-dir__subtitle">Add a student patron to the library directory. A QR code is assigned automatically.</p>
+            <p class="patron-dir__subtitle">Add a student patron to the library directory. A QR code is assigned automatically; RFID is used for attendance.</p>
         </div>
         <div class="patron-dir__hero-actions">
             <a href="{{ route('students.index') }}" class="patron-dir__btn patron-dir__btn--outline">← Student directory</a>
@@ -60,6 +60,12 @@
                         <label for="id_number" class="form-label">ID number <span class="required">*</span></label>
                         <input type="text" name="id_number" id="id_number" class="form-control"
                                value="{{ old('id_number') }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="rfid" class="form-label">RFID</label>
+                        <input type="text" name="rfid" id="rfid" class="form-control"
+                               value="{{ old('rfid') }}" placeholder="Scan or enter RFID strip data"
+                               autocomplete="off">
                     </div>
                     <div class="col-md-6">
                         <label for="birthday" class="form-label">Birthday</label>

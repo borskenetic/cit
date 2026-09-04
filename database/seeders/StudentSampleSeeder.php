@@ -17,6 +17,7 @@ class StudentSampleSeeder extends Seeder
                 'middle_initial' => 'M',
                 'birthday' => '2004-03-15',
                 'qrcode' => 'S-00000001',
+                'rfid' => 'RFID00001',
                 'course' => 'BSCS',
                 'year' => '1st Year',
                 'mobile_number' => '09171234501',
@@ -33,6 +34,7 @@ class StudentSampleSeeder extends Seeder
                 'middle_initial' => 'L',
                 'birthday' => '2003-07-22',
                 'qrcode' => 'S-00000002',
+                'rfid' => 'RFID00002',
                 'course' => 'BEED',
                 'year' => '2nd Year',
                 'mobile_number' => '09171234502',
@@ -49,6 +51,7 @@ class StudentSampleSeeder extends Seeder
                 'middle_initial' => 'D',
                 'birthday' => '2002-11-08',
                 'qrcode' => 'S-00000003',
+                'rfid' => 'RFID00003',
                 'course' => 'BSIT',
                 'year' => '3rd Year',
                 'mobile_number' => '09171234503',
@@ -65,6 +68,7 @@ class StudentSampleSeeder extends Seeder
                 'middle_initial' => 'R',
                 'birthday' => '2005-01-30',
                 'qrcode' => 'S-00000004',
+                'rfid' => 'RFID00004',
                 'course' => 'BSED',
                 'year' => '1st Year',
                 'mobile_number' => '09171234504',
@@ -81,6 +85,7 @@ class StudentSampleSeeder extends Seeder
                 'middle_initial' => 'P',
                 'birthday' => '2001-09-12',
                 'qrcode' => 'S-00000005',
+                'rfid' => 'RFID00005',
                 'course' => 'BSCS',
                 'year' => '4th Year',
                 'mobile_number' => '09171234505',
@@ -97,6 +102,7 @@ class StudentSampleSeeder extends Seeder
                 'middle_initial' => 'A',
                 'birthday' => '2003-05-18',
                 'qrcode' => 'S-00000006',
+                'rfid' => 'RFID00006',
                 'course' => 'BSBA',
                 'year' => '2nd Year',
                 'mobile_number' => '09171234506',
@@ -113,6 +119,7 @@ class StudentSampleSeeder extends Seeder
                 'middle_initial' => 'B',
                 'birthday' => '2004-12-05',
                 'qrcode' => 'S-00000007',
+                'rfid' => 'RFID00007',
                 'course' => 'BSIT',
                 'year' => '1st Year',
                 'mobile_number' => '09171234507',
@@ -129,6 +136,7 @@ class StudentSampleSeeder extends Seeder
                 'middle_initial' => 'C',
                 'birthday' => '2002-08-27',
                 'qrcode' => 'S-00000008',
+                'rfid' => 'RFID00008',
                 'course' => 'BEED',
                 'year' => '3rd Year',
                 'mobile_number' => '09171234508',
@@ -145,6 +153,7 @@ class StudentSampleSeeder extends Seeder
                 'middle_initial' => 'T',
                 'birthday' => '2003-04-14',
                 'qrcode' => 'S-00000009',
+                'rfid' => 'RFID00009',
                 'course' => 'BSCS',
                 'year' => '2nd Year',
                 'mobile_number' => '09171234509',
@@ -161,6 +170,7 @@ class StudentSampleSeeder extends Seeder
                 'middle_initial' => 'V',
                 'birthday' => '2001-06-09',
                 'qrcode' => 'S-00000010',
+                'rfid' => 'RFID00010',
                 'course' => 'BSN',
                 'year' => '4th Year',
                 'mobile_number' => '09171234510',
@@ -179,6 +189,6 @@ class StudentSampleSeeder extends Seeder
             );
         }
 
-        $this->command?->info('10 sample students seeded (QR codes S-00000001 … S-00000010).');
+        $this->command?->info('10 sample students seeded (QR codes S-00000001 … S-00000010, RFID RFID00001 … RFID00010).');
     }
 }

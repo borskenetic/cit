@@ -94,22 +94,27 @@ class AttendanceController extends Controller
         $request->validate(['qrcode' => 'required|string']);
 
         $token = trim(str_replace("\r", '', $request->qrcode));
-        $student = Student::where('qrcode', $token)->first();
+
+        // Primary: match RFID strip data on the student record
+        $student = Student::where('rfid', $token)->first();
+
+        // Fallbacks for legacy QR / ID / name payloads
+        if (! $student) {
+            $student = Student::where('qrcode', $token)->first();
+        }
 
         $parsed = $this->parseQr($request->qrcode);
 
-        // ID number from multiline / comma format
         if (! $student && $parsed['student_no']) {
             $student = Student::where('id_number', $parsed['student_no'])->first();
         }
 
         if (! $student && $parsed['full_name']) {
-
             $qrName = strtoupper($parsed['full_name']);
             $qrName = preg_replace('/[^A-Z\s]/', '', $qrName);
             $qrName = preg_replace('/\b[A-Z]\b/', '', $qrName);
             $qrName = preg_replace('/\s+/', '', $qrName);
-        
+
             $student = Student::where('normalized_name', $qrName)->first();
         }
         
